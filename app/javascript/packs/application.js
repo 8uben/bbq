@@ -5,4 +5,6 @@
 
 import Rails from "@rails/ujs"
 
+import '../bootstrap_js_files.js'
+
 Rails.start()
