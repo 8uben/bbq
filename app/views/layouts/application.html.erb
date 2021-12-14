@@ -9,8 +9,38 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
   </head>
-
   <body>
-    <%= yield %>
+    <div class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <%= link_to 'BBQ!', root_path, class: 'navbar-brand' %>
+        <div class="navbar-collapse collapse">
+          <ul class="navbar-nav">
+            <% if user_signed_in? %>
+              <li class="nav-item"><%= link_to 'Профиль', current_user, class: 'nav-link' %></li>
+              <li class="nav-item"><%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
+            <% else %>
+              <li class="nav-item"><%= link_to 'Войти', new_user_session_path, class: 'nav-link' %></li>
+              <li class="nav-item"><%= link_to 'Зарегистрироваться', new_user_registration_path, class: 'nav-link' %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <%= flash_messages %>
+          <%= yield %>
+        </div>
+        <div class="col-lg-3">
+        </div>
+      </div>
+
+      <footer>
+        <%# Для вывода названия компании используем хелпер I18n.t %>
+        <p>&copy; <%= t 'app.company' %> 2016</p>
+      </footer>
+    </div>
   </body>
 </html>
