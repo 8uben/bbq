@@ -4,7 +4,8 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
+Rails.start()
 
 import '../bootstrap_js_files.js'
-
-Rails.start()
+import '../stylesheets/application.scss'
+const images = require.context('../images', true)

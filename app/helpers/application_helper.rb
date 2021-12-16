@@ -18,6 +18,6 @@ module ApplicationHelper
   end
 
   def user_avatar(user)
-    asset_path('user.png')
+    asset_pack_path('media/images/user.png')
   end
 end
