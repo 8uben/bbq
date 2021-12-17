@@ -18,6 +18,7 @@ ru:
         address: 'Место проведения'
         datetime: 'Дата и время'
         description: 'Описание'
+
   # Перевод сообщений, которые отправляет контроллер
   controllers:
     events:
@@ -26,6 +27,13 @@ ru:
       destroyed: 'Вы удалили мероприятие :('
     users:
       updated: 'Вы обновили свой профиль'
+
   app:
     name: 'Шашлыки'
     company: 'Хороший программист'
+
+  declinations:
+    errors:
+      one: "%{count} ошибка"
+      few: "%{count} ошибки"
+      many: "%{count} ошибок"
