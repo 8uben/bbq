@@ -1,5 +1,5 @@
 <div class="col-md-6">
-  <h2>Регистрация</h2>
+  <h2><%= t('headers.registration') %></h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
@@ -10,20 +10,20 @@
     </div>
 
     <div class="field form-group mb-2">
-      <%= f.label :password, "Пароль" %>
+      <%= f.label :password %>
       <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> символов минимум)</em>
+      <em>(<%= @minimum_password_length %> <%= t('labels_form.min_characters') %>)</em>
       <% end %>
       <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
     </div>
 
     <div class="field form-group mb-2">
-      <%= f.label :password_confirmation, "Повторите пароль" %>
+      <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
     </div>
 
     <div class="actions mb-2">
-      <%= f.submit "Зарегистрироваться", class: "btn btn-primary" %>
+      <%= f.submit <%= t('buttons.sign_up') %>, class: "btn btn-primary" %>
     </div>
   <% end %>
 

@@ -30,4 +30,41 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  confirm:
+    are_you_sure: 'Are you sure?'
+
+  buttons:
+    profile: 'Profile'
+    sign_out: 'Sign out'
+    sign_in: 'Sign in'
+    sign_up: 'Sign up'
+    save: 'Save'
+    back: 'Back'
+    create_event: 'Create event'
+    change: 'Change'
+    delete: 'Delete'
+    change_password: 'Change password'
+    edit_profile: 'Edit profile'
+    reset_password: 'Send me reset password instructions'
+    forgot_password: 'Forgot password?'
+    update: 'Update'
+
+  headers:
+    edit_event: 'Editing Event'
+    events: 'Events'
+    edit_profile: 'Edit profile'
+    new_profile: 'New profile'
+    cancel_my_account: 'Cancel my account'
+    registration: 'Registration'
+    log_in: 'Log in'
+
+  profile_events:
+    organized: 'Organized'
+    has_not_organized: 'user did not organize any events'
+
+  labels_form:
+    leave_blank: "leave blank if you don't want to change it"
+    min_characters: 'characters minimum'
+    current_password: 'we need your current password to confirm your changes'
+
+  unhappy: "unhappy?"

@@ -40,3 +40,39 @@ ru:
 
   confirm:
     are_you_sure: 'Вы уверены?'
+
+  buttons:
+    profile: 'Профиль'
+    sign_out: 'Выйти'
+    sign_in: 'Войти'
+    sign_up: 'Зарегистрироваться'
+    save: 'Сохранить'
+    back: 'Вернуться'
+    create_event: 'Создать событие'
+    change: 'Изменить'
+    delete: 'Удалить'
+    change_password: 'Изменить пароль'
+    edit_profile: 'Редактировать профиль'
+    reset_password: 'Отправить мне инструкцию по сбросу пароля'
+    forgot_password: 'Забыли пароль?'
+    update: 'Обновить'
+    cancel_my_account: 'Удалить мой аккаунт'
+
+  headers:
+    edit_event: 'Редактирование события'
+    events: 'События'
+    edit_profile: 'Редактирование профиля'
+    new_profile: 'Новый профиль'
+    registration: 'Регистрация'
+    log_in: 'Вход'
+
+  profile_events:
+    organized: 'Организовал'
+    has_not_organized: 'Пользователь пока не организовал ни одного события'
+
+  labels_form:
+    leave_blank: 'оставьте поле пустым, если не хотите его менять'
+    min_characters: 'символов минимум'
+    current_password: 'нам нужен ваш текущий пароль для подтверждения ваших изменений'
+
+  unhappy: 'Недовольны?'
