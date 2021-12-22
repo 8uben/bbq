@@ -13,7 +13,7 @@
     <div class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <%= link_to t('app.name'), root_path, class: 'navbar-brand' %>
-        <div class="navbar-collapse collapse">
+        <div class="navbar-collapse collapse" id="navbarToggleExternalContent">
           <ul class="navbar-nav">
             <% if user_signed_in? %>
               <li class="nav-item"><%= link_to t('buttons.profile'), current_user, class: 'nav-link' %></li>
@@ -24,6 +24,9 @@
             <% end %>
           </ul>
         </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
       </div>
     </div>
 
