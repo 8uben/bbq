@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
   belongs_to :user
-  has_many :comments
-  has_many :subscriptions
+  has_many :comments, dependent: :destroy
+  has_many :subscriptions, dependent: :destroy
 
   # Чтобы Рельсы понимали, какой именно класс будет лежать
   # в модели subscribers, надо указать source
