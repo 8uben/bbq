@@ -18,6 +18,19 @@ ru:
         address: 'Место проведения'
         datetime: 'Дата и время'
         description: 'Описание'
+      subscription:
+        user_name: 'Имя пользователя'
+        user_email: 'Эл. адрес'
+      comment:
+        body: 'Комментарий'
+        user_name: 'Имя пользователя'
+
+    errors:
+      models:
+        subscription:
+          attributes:
+            user_email:
+              email_used: 'уже используется'
 
   # Перевод сообщений, которые отправляет контроллер
   controllers:
