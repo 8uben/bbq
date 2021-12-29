@@ -5,12 +5,14 @@ ru:
     models:
       user: 'Пользователь'
       event: 'Событие'
+      photo: 'Фотография'
 
     # Перевод атрибутов моделей
     attributes:
       user:
         email: 'Email'
         name: 'Имя'
+        avatar: 'Аватарка'
         password: 'Пароль'
         password_confirmation: 'Подтверждение пароля'
       event:
@@ -24,6 +26,8 @@ ru:
       comment:
         body: 'Комментарий'
         user_name: 'Имя пользователя'
+      photo:
+        photo: 'Фотография'
 
     errors:
       models:
@@ -31,6 +35,7 @@ ru:
           attributes:
             user_email:
               email_used: 'уже используется'
+
 
   # Перевод сообщений, которые отправляет контроллер
   controllers:
@@ -48,6 +53,10 @@ ru:
       created: 'Вы подписаны на это событие'
       destroyed: 'Участник отписан'
       error: 'Подписка/отписка не сработала'
+    photos:
+      error: 'Что-то не так с фоткой'
+      created: 'Вы добавили фотографию к событию'
+      destroyed: 'Вы удалили фотку'
 
   models:
     subscription:
@@ -84,6 +93,7 @@ ru:
     forgot_password: 'Забыли пароль?'
     update: 'Обновить'
     cancel_my_account: 'Удалить мой аккаунт'
+    upload: 'Загрузить'
 
   headers:
     edit_event: 'Редактирование события'
@@ -96,6 +106,9 @@ ru:
   profile_events:
     organized: 'Организовал'
     has_not_organized: 'Пользователь пока не организовал ни одного события'
+
+  photo_events:
+    added: 'Добавил'
 
   labels_form:
     leave_blank: 'оставьте поле пустым, если не хотите его менять'

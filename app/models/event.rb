@@ -2,7 +2,7 @@ class Event < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :subscriptions, dependent: :destroy
-
+  has_many :photos
   # Чтобы Рельсы понимали, какой именно класс будет лежать
   # в модели subscribers, надо указать source
   has_many :subscribers, through: :subscriptions, source: :user
@@ -12,4 +12,8 @@ class Event < ApplicationRecord
   # У события должны быть заполнены место и время
   validates :address, presence: true
   validates :datetime, presence: true
+
+  def visitors
+    (subscribers + [user]).uniq
+  end
 end
