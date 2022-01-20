@@ -36,7 +36,6 @@ ru:
             user_email:
               email_used: 'уже используется'
 
-
   # Перевод сообщений, которые отправляет контроллер
   controllers:
     events:
