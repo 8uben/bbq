@@ -20,6 +20,7 @@ ru:
         address: 'Место проведения'
         datetime: 'Дата и время'
         description: 'Описание'
+        pincode: 'Пин-код'
       subscription:
         user_name: 'Имя пользователя'
         user_email: 'Эл. адрес'
@@ -43,6 +44,7 @@ ru:
       created: 'Вы создали новое мероприятие'
       updated: 'Вы обновили мероприятие'
       destroyed: 'Вы удалили мероприятие :('
+      wrong_pincode: 'Неверный пин-код!'
     users:
       updated: 'Вы обновили свой профиль'
     comments:
@@ -94,6 +96,8 @@ ru:
     update: 'Обновить'
     cancel_my_account: 'Удалить мой аккаунт'
     upload: 'Загрузить'
+    send: 'Отправить'
+    root: 'На главную'
 
   headers:
     edit_event: 'Редактирование события'
@@ -102,6 +106,7 @@ ru:
     new_profile: 'Новый профиль'
     registration: 'Регистрация'
     log_in: 'Вход'
+    pincode_form: 'Доступ только по пин-коду'
 
   profile_events:
     organized: 'Организовал'

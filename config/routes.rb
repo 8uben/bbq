@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
     # Вложенные в ресурс события ресурсы фотографий
     resources :photos, only: [:create, :destroy]
+
+    post :show, on: :member
   end
 
   resources :users

@@ -45,4 +45,3 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:body, :user_name)
   end
 end
-
