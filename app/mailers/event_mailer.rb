@@ -12,7 +12,7 @@ class EventMailer < ApplicationMailer
 
     # Берём у юзер его email
     # Subject тоже можно переносить в локали
-    mail to: @event.user.email, subject: "#{default_i18n_subject} #{@event.title}"
+    mail to: @event.user.email, subject: default_i18n_subject(event_title: @event.title)
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -24,13 +24,13 @@ class EventMailer < ApplicationMailer
     @comment = comment
     @event = comment.event
 
-    mail to: email, subject: "#{default_i18n_subject} #{@event.title}"
+    mail to: email, subject: default_i18n_subject(event_title: @event.title)
   end
 
   def photo(photo, email)
     @photo = photo
     @event = photo.event
 
-    mail to: email, subject: "#{default_i18n_subject} #{@event.title}"
+    mail to: email, subject: default_i18n_subject(event_title: @event.title)
   end
 end

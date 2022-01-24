@@ -131,7 +131,7 @@ ru:
       event: 'Событие'
       datetime: 'Состоится'
       owner: 'Организатор'
-      subject: 'Новый комментарий @'
+      subject: 'Новый комментарий @ %{event_title}'
     subscription:
       title: 'Новая подписка'
       name: 'Имя'
@@ -140,11 +140,11 @@ ru:
       event: 'Событие'
       datetime: 'Состоится'
       owner: 'Организатор'
-      subject: 'Новая подписка на'
+      subject: 'Новая подписка на %{event_title}'
     photo:
       title: 'Новая фотография'
       author: 'Автор'
       event: 'Событие'
       datetime: 'Состоится'
       owner: 'Организатор'
-      subject: 'Новая фотография @'
+      subject: 'Новая фотография @ %{event_title}'
