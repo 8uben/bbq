@@ -12,6 +12,11 @@ class SubscriptionsController < ApplicationController
 
     if @new_subscription.save
       # Если сохранилась, редиректим на страницу самого события
+      # Если сохранилось, отправляем письмо
+      # Пишем название класса, потом метода и передаём параметры
+      # И доставляем методом .deliver_now (то есть в этом же потоке)
+      EventMailer.subscription(@new_subscription).deliver_now
+
       redirect_to @event, notice: I18n.t('controllers.subscriptions.created')
     else
       # если ошибки — рендерим шаблон события

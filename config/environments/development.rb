@@ -31,7 +31,7 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -72,4 +72,13 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: '587',
+    user_name: Rails.application.credentials.action_mailer[:user_name], # не используйте для тестов свои реальные ящики
+    password: Rails.application.credentials.action_mailer[:password],
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
 end
