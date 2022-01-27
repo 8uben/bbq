@@ -101,6 +101,8 @@ ru:
     new_profile: 'Новый профиль'
     registration: 'Регистрация'
     log_in: 'Вход'
+    forgot_password: 'Забыли пароль?'
+    restore_password: 'Восстановить пароль'
 
   profile_events:
     organized: 'Организовал'
@@ -113,6 +115,8 @@ ru:
     leave_blank: 'оставьте поле пустым, если не хотите его менять'
     min_characters: 'символов минимум'
     current_password: 'нам нужен ваш текущий пароль для подтверждения ваших изменений'
+    new_password: 'Новый пароль'
+    confirm_new_password: 'Подтвердите новый пароль'
 
   unhappy: 'Недовольны?'
 
