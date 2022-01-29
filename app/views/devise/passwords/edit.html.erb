@@ -1,0 +1,27 @@
+<div class="col-md-6">
+  <h2><%= t('headers.restore_password') %></h2>
+
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render 'devise/shared/error_messages', resource: resource %>
+    <%= f.hidden_field :reset_password_token %>
+
+    <div class="field form-group mb-2">
+      <%= f.label :password, t('labels_form.new_password') %><br />
+      <% if @minimum_password_length %>
+        <em>(<%= "#{@minimum_password_length}  #{t('labels_form.min_characters')}" %>)</em><br />
+      <% end %>
+      <%= f.password_field :password, autofocus: true, autocomplete: t('labels_form.new_password'), class: "form-control" %>
+    </div>
+
+    <div class="field form-group mb-2">
+      <%= f.label :password_confirmation, t('labels_form.confirm_new_password') %><br />
+      <%= f.password_field :password_confirmation, autocomplete: t('labels_form.new_password'), class: "form-control" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit t('buttons.change_password'), class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+</div>

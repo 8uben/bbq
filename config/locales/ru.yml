@@ -106,6 +106,8 @@ ru:
     registration: 'Регистрация'
     log_in: 'Вход'
     pincode_form: 'Доступ только по пин-коду'
+    forgot_password: 'Забыли пароль?'
+    restore_password: 'Восстановить пароль'
 
   profile_events:
     organized: 'Организовал'
@@ -118,6 +120,8 @@ ru:
     leave_blank: 'оставьте поле пустым, если не хотите его менять'
     min_characters: 'символов минимум'
     current_password: 'нам нужен ваш текущий пароль для подтверждения ваших изменений'
+    new_password: 'Новый пароль'
+    confirm_new_password: 'Подтвердите новый пароль'
 
   unhappy: 'Недовольны?'
 
