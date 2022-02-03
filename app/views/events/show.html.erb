@@ -1,3 +1,8 @@
+<% content_for(:head) do %>
+  <%= javascript_include_tag "https://api-maps.yandex.ru/2.1/?apikey=#{Rails.application.credentials.dig(:yandex_maps, :apikey)}&lang=ru_RU" %>
+  <%= javascript_pack_tag 'map' %>
+<% end %>
+
 <div class="event">
   <div class="event-info row">
     <div class="col-md-12">
@@ -29,6 +34,7 @@
 
   <div class="row">
     <div class="col-md-8">
+      <%= tag.div id: 'map', class: 'event-map', data: {address: @event.address} %>
       <div class="col-md-8">
         <%# Выводим все фотографии события %>
         <div class="event-photos-gallery">
