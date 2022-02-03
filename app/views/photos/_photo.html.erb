@@ -1,13 +1,16 @@
 <div class="event-photo buffer-both">
-  <%= link_to image_tag(photo.photo.thumb.url), photo.photo.url %>
-  <p>
-    <%= t('photo_events.added') %> <%= render partial: 'users/user', object: photo.user %>
-    <em><%= l photo.created_at, format: :short %></em>
-    <% if current_user_can_edit?(photo) %>
-      <%= link_to(
-            fa_icon('trash'), event_photo_path(photo.event, photo),
-            method: :delete, data: {confirm: t('.destroy_confirm')}
-        ) %>
-    <% end %>
-  </p>
+
+  <% if current_user_can_edit?(photo) %>
+    <% icon_trash = link_to(
+        fa_icon('trash'), event_photo_path(photo.event, photo),
+        method: :delete, data: {confirm: t('.destroy_confirm')}
+      )
+    %>
+  <% end %>
+
+  <% creation_photo_time = l photo.created_at, format: :short %>
+  <% info = "Добавил #{render partial: 'users/user', object: photo.user} #{creation_photo_time} #{icon_trash}" %>
+  <%= link_to image_tag(photo.photo.thumb.url), photo.photo.url, data: {lightbox: 'test', title: info} %>
+  <%= t('photo_events.added') %> <%= render partial: 'users/user', object: photo.user %>
+  <em><%= creation_photo_time %></em> <%= icon_trash %>
 </div>

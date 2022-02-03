@@ -6,6 +6,7 @@
 import Rails from "@rails/ujs"
 Rails.start()
 
-import '../bootstrap_js_files.js'
+import '../js/bootstrap_js_files.js'
 import '../stylesheets/application.scss'
+import 'lightbox2/dist/js/lightbox-plus-jquery.js'
 const images = require.context('../images', true)

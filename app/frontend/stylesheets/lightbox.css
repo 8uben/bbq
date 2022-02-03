@@ -1,0 +1,11 @@
+.lb-dataContainer {
+  background: #ffffff;
+}
+
+.lb-data {
+    color: #000;
+}
+
+.lb-close {
+  filter: invert(1);
+}
