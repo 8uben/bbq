@@ -110,6 +110,6 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
-  config.action_mailer.default_url_options = { host: ENV['MAILER_HOST'] }
+  config.action_mailer.default_url_options = { host: Rails.application.credentials.dig(:action_mailer, :mailer_host) }
   config.action_mailer.delivery_method = :mailjet
 end
