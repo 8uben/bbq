@@ -20,6 +20,8 @@ gem 'rmagick'
 gem 'fog-aws'
 gem 'mailjet'
 
+gem 'pundit'
+
 group :production do
   gem 'pg'
 end
