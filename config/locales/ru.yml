@@ -161,3 +161,6 @@ ru:
       datetime: 'Состоится'
       owner: 'Организатор'
       subject: 'Новая фотография @ %{event_title}'
+
+  pundit:
+    not_authorized: 'Это не разрешено для вас!'

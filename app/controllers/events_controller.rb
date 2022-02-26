@@ -1,11 +1,11 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :set_event, only: [:show]
-  # Здесь уже перечисляем все действия, доступные конкретному юзеру
-  before_action :set_current_user_event, only: [:edit, :update, :destroy]
+  before_action :set_event, except: [:index, :new, :create]
 
   # Проверка пин-кода перед отображением события
   before_action :password_guard!, only: [:show]
+
+  after_action :verify_authorized, except: [:index, :show]
 
   def index
     @events = Event.all
@@ -21,13 +21,12 @@ class EventsController < ApplicationController
 
   def new
     @event = current_user.events.build
-  end
-
-  def edit
+    authorize @event
   end
 
   def create
     @event = current_user.events.build(event_params)
+    authorize @event
 
     if @event.save
       redirect_to @event, notice: I18n.t('controllers.events.created')
@@ -36,7 +35,13 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit
+    authorize @event
+  end
+
   def update
+    authorize @event
+
     if @event.update(event_params)
       # Здесь адрес для контроллера events и действия update
       redirect_to @event, notice: I18n.t('controllers.events.updated')
@@ -46,6 +51,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    authorize @event
     @event.destroy
     redirect_to events_url, notice: I18n.t('controllers.events.destroyed')
   end
@@ -59,12 +65,6 @@ class EventsController < ApplicationController
   # редактируем параметры события
   def event_params
     params.require(:event).permit(:title, :address, :datetime, :description, :pincode)
-  end
-
-  # Будем искать событие не среди всех,
-  # а только у текущего пользователя по id
-  def set_current_user_event
-    @event = current_user.events.find(params[:id])
   end
 
   def password_guard!
