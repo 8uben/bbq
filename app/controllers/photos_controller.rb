@@ -10,6 +10,8 @@ class PhotosController < ApplicationController
     # Проставляем у фотографии пользователя
     @new_photo.user = current_user
 
+    authorize @new_photo
+
     if @new_photo.save
       notify_subscribers(@new_photo)
 
@@ -26,12 +28,8 @@ class PhotosController < ApplicationController
 
     # Проверяем, может ли пользователь удалить фотографию
     # Если может — удаляем
-    if current_user_can_edit?(@photo)
-      @photo.destroy
-    else
-    # Если нет — сообщаем ему
-      message = {alert: I18n.t('controllers.photos.error')}
-    end
+    authorize @photo
+    @photo.destroy
 
     # В любом случае редиректим юзера на событие
     redirect_to @event, message

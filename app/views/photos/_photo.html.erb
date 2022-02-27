@@ -1,5 +1,5 @@
 <div class="event-photo buffer-both">
-  <% if current_user_can_edit?(photo) %>
+  <% if policy(photo).destroy? %>
     <% icon_trash = link_to(
         fa_icon('trash'), event_photo_path(photo.event, photo),
         method: :delete, data: {confirm: t('.destroy_confirm')}
