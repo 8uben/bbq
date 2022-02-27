@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
-    skip_authorization
+    authorize @user
   end
 
   # GET /users/1/edit
