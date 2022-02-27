@@ -2,10 +2,8 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :set_event, except: [:index, :new, :create]
 
-  after_action :verify_authorized, except: [:index]
-
   def index
-    @events = Event.all
+    @events = authorize policy_scope(Event)
   end
 
   def show

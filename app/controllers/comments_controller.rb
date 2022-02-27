@@ -8,6 +8,8 @@ class CommentsController < ApplicationController
     # Проставляем пользователя, если он задан
     @new_comment.user = current_user
 
+    authorize @new_comment
+
     if @new_comment.save
       # уведомляем всех подписчиков о новом комментарии
       notify_subscribers(@new_comment)
@@ -23,11 +25,8 @@ class CommentsController < ApplicationController
   def destroy
     message = {notice: I18n.t('controllers.comments.destroyed')}
 
-    if current_user_can_edit?(@comment)
-      @comment.destroy!
-    else
-      message = {alert: I18n.t('controllers.comments.error')}
-    end
+    authorize @comment
+    @comment.destroy!
 
     redirect_to @event, message
   end

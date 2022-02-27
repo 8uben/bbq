@@ -25,7 +25,7 @@ class ApplicationPolicy
   end
 
   def update?
-    false
+    user_is_owner?(record)
   end
 
   def edit?
@@ -33,7 +33,7 @@ class ApplicationPolicy
   end
 
   def destroy?
-    false
+    update?
   end
 
   class Scope
@@ -49,5 +49,11 @@ class ApplicationPolicy
     private
 
     attr_reader :user, :scope
+  end
+
+  private
+
+  def user_is_owner?(model)
+    user.present? && (model.try(:user) == user)
   end
 end

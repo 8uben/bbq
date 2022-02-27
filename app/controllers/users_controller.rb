@@ -9,13 +9,17 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+    authorize @user
   end
 
   # GET /users/1/edit
   def edit
+    authorize @user
   end
 
   def update
+    authorize @user
+
     if @user.update(user_params)
       redirect_to @user, notice: I18n.t('controllers.users.updated')
     else
