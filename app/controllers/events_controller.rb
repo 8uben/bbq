@@ -2,21 +2,20 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :set_event, except: [:index, :new, :create]
 
-  # Проверка пин-кода перед отображением события
-  before_action :password_guard!, only: [:show]
-
-  after_action :verify_authorized, except: [:index, :show]
+  after_action :verify_authorized, except: [:index]
 
   def index
     @events = Event.all
   end
 
   def show
+    authorize @event
+
     @new_comment = @event.comments.build(params[:comment])
     @new_subscription = @event.subscriptions.build(params[:subscription])
-
-    # Болванка модели для формы добавления фотографии
     @new_photo = @event.photos.build(params[:photo])
+  rescue Pundit::NotAuthorizedError
+    password_guard!
   end
 
   def new
@@ -68,11 +67,6 @@ class EventsController < ApplicationController
   end
 
   def password_guard!
-    # Если у события нет пин-кода, то охранять нечего
-    return true if @event.pincode.blank?
-    # Пин-код не нужен автору события
-    return true if signed_in? && current_user == @event.user
-
     # Если нам передали код и он верный, сохраняем его в куки этого юзера
     # Так юзеру не нужно будет вводить пин-код каждый раз
     if params[:pincode].present? && @event.pincode_valid?(params[:pincode])

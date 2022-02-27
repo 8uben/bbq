@@ -4,7 +4,7 @@ class EventPolicy < ApplicationPolicy
   end
 
   def show?
-    update?
+    record.pincode.blank? || update?
   end
 
   def edit?
