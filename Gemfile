@@ -22,6 +22,9 @@ gem 'mailjet'
 
 gem 'pundit'
 
+# Resque (pronounced like "rescue") is a Redis-backed library for creating background jobs
+gem 'resque'
+
 group :production do
   gem 'pg'
 end
@@ -48,4 +51,5 @@ group :development do
   gem 'capistrano-passenger', '~> 0.2'
   gem 'capistrano-rbenv', '~> 2.1'
   gem 'capistrano-bundler', '~> 1.2'
+  gem 'capistrano-resque', '~> 0.2.3', require: false
 end
