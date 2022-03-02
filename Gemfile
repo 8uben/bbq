@@ -22,6 +22,11 @@ gem 'mailjet'
 
 gem 'pundit'
 
+# multi-provider authentication
+gem 'omniauth'
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-facebook'
+
 group :production do
   gem 'pg'
 end
@@ -48,8 +53,4 @@ group :development do
   gem 'capistrano-passenger', '~> 0.2'
   gem 'capistrano-rbenv', '~> 2.1'
   gem 'capistrano-bundler', '~> 1.2'
-
-  # multi-provider authentication
-  gem 'omniauth'
-  gem 'omniauth-facebook'
 end
