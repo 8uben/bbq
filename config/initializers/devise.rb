@@ -278,6 +278,10 @@ Devise.setup do |config|
     Rails.application.credentials.dig(:oauth, :facebook, :app_id),
     Rails.application.credentials.dig(:oauth, :facebook, :secret)
 
+  config.omniauth :vkontakte,
+    Rails.application.credentials.dig(:oauth, :vkontakte, :app_id),
+    Rails.application.credentials.dig(:oauth, :vkontakte, :secret)
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
