@@ -4,7 +4,7 @@
   <% else %>
     <em><%= subscription.user_name %></em>
   <% end %>
-  <% if current_user_can_edit?(subscription) %>
+  <% if policy(subscription).destroy? || policy(subscription.event).update? %>
     <%= link_to(
             fa_icon('times'),
             event_subscription_path(subscription.event, subscription),
