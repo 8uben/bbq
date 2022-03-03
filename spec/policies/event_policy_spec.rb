@@ -16,7 +16,7 @@ RSpec.describe EventPolicy, type: :policy do
       it { is_expected.not_to permit(nil, Event) }
     end
 
-    permissions :show?, :edit?, :update?, :destroy? do
+    permissions :edit?, :update?, :destroy? do
       it { is_expected.not_to permit(user_has_not_event, event) }
     end
   end
