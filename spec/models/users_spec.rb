@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe '.find_for_facebook_oauth' do
+  describe '.find_for_social_network_oauth' do
     # Создаём объект :access_token
     # В него записываем те данные, которые мы доставали их хеша
     let(:access_token) do
@@ -16,7 +16,7 @@ RSpec.describe User, type: :model do
     # Ситуация: пользователь не найден
     context 'when user is not found' do
       it 'returns newly created user' do
-        user = User.find_for_facebook_oauth(access_token)
+        user = User.find_for_social_network_oauth(access_token)
 
         expect(user).to be_persisted
         expect(user.email).to eq 'vladislav.fdv@mail.ru'
@@ -29,7 +29,26 @@ RSpec.describe User, type: :model do
       let!(:some_other_user) { create(:user) }
 
       it 'returns this user' do
-        expect(User.find_for_facebook_oauth(access_token)).to eq existing_user
+        expect(User.find_for_social_network_oauth(access_token)).to eq existing_user
+      end
+    end
+
+    # Ситуация: юзер не найден по почте
+    context 'when user is found by email' do
+      let(:access_token) do
+        double(
+            :access_token,
+            provider: 'vkontakte',
+            info: double(email: nil),
+            extra: double(raw_info: double(id: '22579123'))
+        )
+      end
+
+      it 'returns newly created user' do
+        user = User.find_for_social_network_oauth(access_token)
+
+        expect(user).to be_persisted
+        expect(user.email).to eq '22579123@vk.com'
       end
     end
 
@@ -43,7 +62,7 @@ RSpec.describe User, type: :model do
       let!(:some_other_uer) { create(:user) }
 
       it 'returns this user' do
-        expect(User.find_for_facebook_oauth(access_token)).to eq existing_user
+        expect(User.find_for_social_network_oauth(access_token)).to eq existing_user
       end
     end
   end
