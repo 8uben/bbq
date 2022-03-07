@@ -6,7 +6,13 @@
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
-server 'vladfdv.ru', user: 'deploy', roles: %w[app db web]
+server 'vladfdv.ru', user: 'deploy', roles: %w[app db web resque_worker]
+
+# При запуске воркера загружать Rails приложение
+set :resque_environment_task, true
+# Будет запущен один воркер, обслуживающий очереди
+set :workers, { "#{fetch(:application)}*" => 1 }
+
 
 
 # role-based syntax
@@ -59,3 +65,5 @@ server 'vladfdv.ru', user: 'deploy', roles: %w[app db web]
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
+
+after 'deploy:restart', 'resque:restart'

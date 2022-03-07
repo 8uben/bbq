@@ -13,7 +13,7 @@ class PhotosController < ApplicationController
     authorize @new_photo
 
     if @new_photo.save
-      notify_subscribers(@new_photo)
+      MailSentAboutPhotoJob.perform_later(@new_photo)
 
       # Если фотка сохранилась, редиректим на событие с сообщением
       redirect_to @event, notice: I18n.t('controllers.photos.created')
@@ -53,14 +53,5 @@ class PhotosController < ApplicationController
   # c единственным полем photo
   def photo_params
     params.fetch(:photo, {}).permit(:photo)
-  end
-
-  def notify_subscribers(photo)
-    all_emails =
-      (@event.subscriptions.map(&:user_email) + [@event.user.email] - [photo.user&.email]).uniq
-
-    all_emails.each do |mail|
-      EventMailer.photo(photo, mail).deliver_now
-    end
   end
 end
