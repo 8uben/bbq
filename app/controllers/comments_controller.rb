@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
   def create
     # Создаём объект @new_comment из @event
     @new_comment = @event.comments.build(comment_params)
+
     # Проставляем пользователя, если он задан
     @new_comment.user = current_user
 

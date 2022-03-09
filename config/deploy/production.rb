@@ -6,7 +6,9 @@
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
-server 'vladfdv.ru', user: 'deploy', roles: %w[app db web resque_worker]
+server Rails.application.credentials.dig(:cap, :domain),
+  user: Rails.application.credentials.dig(:cap, :user),
+  roles: %w[app db web resque_worker]
 
 # При запуске воркера загружать Rails приложение
 set :resque_environment_task, true
