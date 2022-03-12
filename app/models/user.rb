@@ -36,8 +36,10 @@ class User < ApplicationRecord
   end
 
   def self.find_for_social_network_oauth(access_token)
+    info = access_token.info
+
     # Достаём email из токена
-    email = access_token.info.email
+    email = info.email
     user = where(email: email).first
     # Возвращаем, если нашёлся
     return user if user.present?
@@ -58,8 +60,11 @@ class User < ApplicationRecord
     # Теперь ищем в базе запись по провайдеру и урлу
     # Если есть, то вернётся, если нет, то будет создана новая
     where(url: url, provider: provider).first_or_create! do |user|
-      # Если создаём новую запись, прописываем email и пароль
+      # Если создаём новую запись,
+      # прописываем имя, email, пароль, ссыллку на аватар и источник.
+      user.name = info.name
       user.email = email || "#{id}@#{domain}"
+      user.remote_avatar_url = info.image
       user.password = Devise.friendly_token.first(16)
       user.provider = provider
     end
