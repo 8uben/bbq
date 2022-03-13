@@ -2,7 +2,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: [:facebook, :vkontakte]
 
   mount_uploader :avatar, AvatarUploader
 
@@ -36,5 +37,40 @@ class User < ApplicationRecord
   def link_subscriptions
     Subscription.where(user_id: nil, user_email: self.email)
       .update_all(user_id: self.id)
+  end
+
+  def self.find_for_social_network_oauth(access_token)
+    info = access_token.info
+
+    # Достаём email из токена
+    email = info.email
+    user = where(email: email).first
+    # Возвращаем, если нашёлся
+    return user if user.present?
+
+    # Если не нашёлся, достаём провайдера, айдишник и урл
+    id = access_token.extra.raw_info.id
+    provider = access_token.provider
+
+    case provider
+    when 'facebook'
+      domain = 'facebook.com'
+      url = "https://#{domain}/#{id}"
+    when 'vkontakte'
+      domain = 'vk.com'
+      url = "https://#{domain}/id#{id}"
+    end
+
+    # Теперь ищем в базе запись по провайдеру и урлу
+    # Если есть, то вернётся, если нет, то будет создана новая
+    where(url: url, provider: provider).first_or_create! do |user|
+      # Если создаём новую запись,
+      # прописываем имя, email, пароль, ссыллку на аватар и источник.
+      user.name = info.name
+      user.email = email || "#{id}@#{domain}"
+      user.remote_avatar_url = info.image
+      user.password = Devise.friendly_token.first(16)
+      user.provider = provider
+    end
   end
 end

@@ -25,6 +25,12 @@ gem 'pundit'
 # Resque (pronounced like "rescue") is a Redis-backed library for creating background jobs
 gem 'resque'
 
+# multi-provider authentication
+gem 'omniauth'
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-facebook'
+gem 'omniauth-vkontakte'
+
 group :production do
   gem 'pg'
 end
@@ -36,6 +42,7 @@ group :development, :test do
   gem 'sqlite3', '~> 1.4'
 
   gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 group :development do

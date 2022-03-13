@@ -1,3 +1,6 @@
+# This include make constants like Rails.application accessible in files.
+require File.expand_path("./environment", __dir__)
+
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.16.0"
 
