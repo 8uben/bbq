@@ -17,7 +17,7 @@ class ApplicationPolicy
   end
 
   def create?
-    false
+    update?
   end
 
   def new?
@@ -25,7 +25,7 @@ class ApplicationPolicy
   end
 
   def update?
-    user_is_owner?(record)
+    user_is_owner?
   end
 
   def edit?
@@ -53,7 +53,8 @@ class ApplicationPolicy
 
   private
 
-  def user_is_owner?(model)
-    user.present? && (model.try(:user) == user)
+  def user_is_owner?
+    return false unless user.present?
+    record.try(:user) == user || record.try(:event).try(:user) == user
   end
 end
