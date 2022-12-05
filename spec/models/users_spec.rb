@@ -8,7 +8,11 @@ RSpec.describe User, type: :model do
       double(
         :access_token,
         provider: 'facebook',
-        info: double(email: 'vladislav.fdv@mail.ru'),
+        info: double(
+          name: 'Владислав',
+          email: 'vladislav.fdv@mail.ru',
+          image: 'https://dummyimage.com/1080x1437'
+        ),
         extra: double(raw_info: double(id: '101342150919664'))
       )
     end
@@ -37,10 +41,14 @@ RSpec.describe User, type: :model do
     context 'when user is found by email' do
       let(:access_token) do
         double(
-            :access_token,
-            provider: 'vkontakte',
-            info: double(email: nil),
-            extra: double(raw_info: double(id: '22579123'))
+          :access_token,
+          provider: 'vkontakte',
+          info: double(
+            name: 'Владислав',
+            email: nil,
+            image: 'https://dummyimage.com/1080x1437'
+          ),
+          extra: double(raw_info: double(id: '22579123'))
         )
       end
 
