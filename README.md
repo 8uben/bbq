@@ -107,4 +107,4 @@ $ rails s
 In browser open `localhost:3000`
 
 ## Demo
-deploy on [**VPS**](https://vladfdv.ru/)
+deploy on [**VPS**](https://bbq.vladfdv.ru/)
