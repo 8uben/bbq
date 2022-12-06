@@ -1,10 +1,7 @@
 <div class="event-photo buffer-both">
   <% if policy(photo).destroy? %>
-    <% icon_trash = link_to(
-        fa_icon('trash'), event_photo_path(photo.event, photo),
-        method: :delete, data: {confirm: t('.destroy_confirm')}
-      )
-    %>
+    <% icon_trash = link_to(fa_icon('trash'), event_photo_path(photo.event, photo),
+                            method: :delete, data: {confirm: t('.destroy_confirm')}) %>
   <% end %>
 
   <% creation_photo_time = l photo.created_at, format: :short %>
